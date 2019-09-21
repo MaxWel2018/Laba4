@@ -4,7 +4,7 @@ import Utility.MyData;
 
 public class Student extends Person {
     private static int staticId = 0;
-    private  int id = 0;
+    private int id;
     private int phone;
     private String faculty;
     private int course;
@@ -33,7 +33,7 @@ public class Student extends Person {
         private String group = "";
         private String surName = "";
         private String patronymic = "";
-        private MyData birthday = new MyData(0, 0, 0);
+        private MyData birthday = BIRTHDAY_DEFAULT;
         private Address address = ADDRESS_DEFAULT;
 
         private Builder() {
@@ -44,7 +44,7 @@ public class Student extends Person {
             if (name != null)
                 this.name = name;
             else
-                name = "";
+                this.name = "";
 
             return this;
         }
@@ -58,7 +58,7 @@ public class Student extends Person {
             if (faculty != null)
                 this.faculty = faculty;
             else
-                faculty = "";
+                this.faculty = "";
             return this;
         }
 
@@ -71,7 +71,7 @@ public class Student extends Person {
             if (group != null)
                 this.group = group;
             else
-                group = "";
+                this.group = "";
             return this;
         }
 
@@ -79,7 +79,7 @@ public class Student extends Person {
             if (surName != null)
                 this.surName = surName;
             else
-                surName = "";
+                this.surName = "";
             return this;
         }
 
@@ -87,7 +87,7 @@ public class Student extends Person {
             if (surName != null)
                 this.patronymic = patronymic;
             else
-                patronymic = "";
+                this.patronymic = "";
 
             return this;
         }
@@ -96,7 +96,7 @@ public class Student extends Person {
             if (birthday != null)
                 this.birthday = new MyData(birthday.getYear(), birthday.getMonth(), birthday.getDay());
             else
-                birthday = new MyData(0, 0, 0);
+                this.birthday = BIRTHDAY_DEFAULT;
             return this;
         }
 
@@ -104,7 +104,7 @@ public class Student extends Person {
             if (address != null)
                 this.address = address;
             else
-                address = ADDRESS_DEFAULT;
+                this.address = ADDRESS_DEFAULT;
             return this;
         }
 
@@ -115,16 +115,51 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student{" +
+
+        String info = "Name='" + name + '\'' +
+                "id=" + id +' '+
+                ", Sur name='" + surName + '\'' +
+                ", Patronymic='" + patronymic + '\'' +
+                ", Phone=" + phone +
+                ", Faculty='" + faculty + '\'' +
+                ", Course=" + course +
+                ", Group='" + group + '\'' +
+                ", Address=" + address +
+                ", Birthday=" + birthday;
+
+        String shortInfo = "Name='" + name + '\'' +
                 "id=" + id +
-                ", phone=" + phone +
-                ", faculty='" + faculty + '\'' +
-                ", course=" + course +
-                ", group='" + group + '\'' +
-                ", surName='" + surName + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", address=" + address +
-                '}';
+                ", Sur name='" + surName + '\'' +
+                ", Phone=" + phone +
+                ", Faculty='" + faculty + '\'' +
+                ", Course=" + course +
+                ", Group='" + group + '\'';
+
+        return shortInfo;
+
+    }
+
+    public static int getStaticId() {
+        return staticId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public int getCourse() {
+        return course;
+    }
+
+    public String getGroup() {
+        return group;
     }
 }

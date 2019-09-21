@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import static Utility.MyRandom.*;
 
 public class University {
+    public static final int NUMBER_OF_STUDENTS = 10;
     private final ArrayList<Student> students = new ArrayList<>();
     public static University instance = new University();
 
@@ -15,29 +16,57 @@ public class University {
         if (instance == null) instance = new University();
         return instance;
     }
-    public static final int NUMBER_OF_STUDENTS = 50;
 
     {
-
         for (int i = 0; i < NUMBER_OF_STUDENTS; i++) {
 
-        int course = rnd(1, 6);
-        String faculty = getRandomFacultyName();
-        String group = getRandomGroupName() +"_" +course +"_"+ faculty.charAt(0) + faculty.charAt(1);
-        students.add(Student.builder()
-                .withSurName(getRandomString())
-                .withName(getRandomString())
-                .withPhone(rnd(100000000, 999999999))
-                .withPatronymic(getRandomString())
-                .withBirthday(getRandomDate())
-                .withAddress(getRandomAddress())
-                .withCourse(course)
-                .withFaculty(faculty)
-                .withGroup(group)
-                .build()
-        );
+            int course = rnd(1, 4);
+            String faculty = getRandomFacultyName();
+            String group = getRandomGroupName() + "_" + course + "_" + faculty.charAt(0) + faculty.charAt(1);
+            students.add(Student.builder()
+                    .withSurName(getRandomString())
+                    .withName(getRandomString())
+                    .withPhone(rnd(100000000, 999999999))
+                    .withPatronymic(getRandomString())
+                    .withBirthday(getRandomDate())
+                    .withAddress(getRandomAddress())
+                    .withCourse(course)
+                    .withFaculty(faculty)
+                    .withGroup(group)
+                    .build()
+            );
         }
+    }
 
+    void filterFaculty(ArrayList<Student> students, String nameFaculty) {
+        if (students != null && nameFaculty != null) {
+            students.stream().filter(x -> x.getFaculty().equals(nameFaculty)).forEach(System.out::println);
+        }
+    }
+    void filterAfterGivenYear(ArrayList<Student> students, int year) {
+        if (students != null && year >=0) {
+            students.stream().filter(x -> x.getBirthday().getYear()>=year).forEach(System.out::println);
+        }
+    }
+
+    void filterFacultyAndCourse(ArrayList<Student> students) {
+        if (students != null) {
+            System.out.println("\n=================== Gryffindor =============================");
+            students.stream().filter(x -> x.getFaculty().equals("Gryffindor")).forEach(System.out::println);
+            System.out.println("\n=================== Hufflepuff =============================");
+            students.stream().filter(x -> x.getFaculty().equals("Hufflepuff")).forEach(System.out::println);
+            System.out.println("\n=================== Slytherin =============================");
+            students.stream().filter(x -> x.getFaculty().equals("Slytherin")).forEach(System.out::println);
+            System.out.println();
+            System.out.println("\n=================== 1 Courses =============================");
+            students.stream().filter(x -> x.getCourse() == 1).forEach(System.out::println);
+            System.out.println("\n=================== 2 Courses =============================");
+            students.stream().filter(x -> x.getCourse() == 2).forEach(System.out::println);
+            System.out.println("\n=================== 3 Courses =============================");
+            students.stream().filter(x -> x.getCourse() == 3).forEach(System.out::println);
+            System.out.println("\n=================== 4 Courses =============================");
+            students.stream().filter(x -> x.getCourse() == 4).forEach(System.out::println);
+        }
     }
 
     ArrayList getListStudent() {

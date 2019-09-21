@@ -10,11 +10,10 @@ public class Main {
         University university = University.getInstance();
 
         ArrayList students = university.getListStudent();
+        university.filterAfterGivenYear(students,2000);
 
-        for (Object student : students) {
-            System.out.println(student);
+//        university.filterFaculty(students,"Gryffindor");
 
-        }
 
     }
 }

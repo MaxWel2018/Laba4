@@ -4,7 +4,8 @@ import Utility.MyData;
 
 abstract class Person {
     static final Address ADDRESS_DEFAULT = new Address(0, "", "");
-   protected   String name;
+     static final MyData BIRTHDAY_DEFAULT = new MyData(0, 0, 0);
+    protected   String name;
     protected String surName;
     protected String patronymic;
     protected  MyData birthday;

@@ -2,7 +2,11 @@ package Utility;
 
 import laba4.Address;
 
-public class MyRandom {
+public final class  MyRandom {
+
+    private MyRandom() {
+    }
+
     public static int rnd(int min, int max) {
         max -= min;
         return (int) (Math.random() * ++max) + min;
@@ -22,8 +26,12 @@ public class MyRandom {
 
     public static String getRandomString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i <= rnd(3, 10); i++) {
-            stringBuilder.append((char) rnd(97, 122));
+        for (int i = 0; i <= rnd(3, 10); i++) { // длинна строки
+            if (i == 0) {
+                stringBuilder.append((char) rnd(65, 90));
+                continue;
+            }
+            stringBuilder.append((char) rnd(97, 122)); // буквы от а  до я
         }
         return stringBuilder.toString();
     }
@@ -31,29 +39,24 @@ public class MyRandom {
     public static String getRandomGroupName() {
         String group1 = "Group1";
         String group2 = "Group2";
-        String group3 = "Group3";
-        String group4 = "Group4";
 
-        int n = rnd(1, 4);
+        int n = rnd(1, 2);
         switch (n) {
             case 1:
                 return group1;
             case 2:
                 return group2;
-            case 3:
-                return group3;
-            case 4:
-                return group4;
             default:
                 return "";
         }
 
     }
+
     public static String getRandomFacultyName() {
         String faculty1 = "Gryffindor";
         String faculty2 = "Hufflepuff";
         String faculty3 = "Slytherin";
-        int n = rnd(1,3);
+        int n = rnd(1, 3);
         switch (n) {
             case 1:
                 return faculty1;

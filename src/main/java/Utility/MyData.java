@@ -1,6 +1,6 @@
 package Utility;
 
-public class MyData {
+public final class MyData {
     private int year;
     private int month;
     private int day;
@@ -22,6 +22,10 @@ public class MyData {
 
     public int getDay() {
         return day;
+    }
+
+    public MyData getData() {
+        return this;
     }
     @Override
     public String toString() {
