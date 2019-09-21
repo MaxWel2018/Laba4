@@ -1,8 +1,20 @@
 package laba4;
 
+import Utility.MyRandom;
+
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        Student student = Student.builder().withName("max").withSurName("krugovykh").withBirthday(null).build();
-        System.out.println(student);
+
+        University university = University.getInstance();
+
+        ArrayList students = university.getListStudent();
+
+        for (Object student : students) {
+            System.out.println(student);
+
+        }
+
     }
 }

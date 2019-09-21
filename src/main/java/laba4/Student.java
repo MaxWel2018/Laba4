@@ -3,7 +3,8 @@ package laba4;
 import Utility.MyData;
 
 public class Student extends Person {
-    private static int id = 0;
+    private static int staticId = 0;
+    private  int id = 0;
     private int phone;
     private String faculty;
     private int course;
@@ -16,7 +17,8 @@ public class Student extends Person {
         this.faculty = builder.faculty;
         this.course = builder.course;
         this.group = builder.group;
-        id++;
+        staticId++;
+        this.id = staticId;
     }
 
     static Builder builder() {

@@ -2,8 +2,6 @@ package laba4;
 
 import Utility.MyData;
 
-import java.time.LocalDate;
-
 abstract class Person {
     static final Address ADDRESS_DEFAULT = new Address(0, "", "");
    protected   String name;
