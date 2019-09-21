@@ -1,4 +1,4 @@
 .idea
 target/
-*.log
-src/main/java/laba4/Main.java
+*.loggi
+/src/main/java/laba4/Main.java

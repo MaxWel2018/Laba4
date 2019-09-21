@@ -36,21 +36,7 @@ public final class  MyRandom {
         return stringBuilder.toString();
     }
 
-    public static String getRandomGroupName() {
-        String group1 = "Group1";
-        String group2 = "Group2";
 
-        int n = rnd(1, 2);
-        switch (n) {
-            case 1:
-                return group1;
-            case 2:
-                return group2;
-            default:
-                return "";
-        }
-
-    }
 
     public static String getRandomFacultyName() {
         String faculty1 = "Gryffindor";

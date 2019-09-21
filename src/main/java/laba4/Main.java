@@ -1,7 +1,5 @@
 package laba4;
 
-import Utility.MyRandom;
-
 import java.util.ArrayList;
 
 public class Main {
@@ -10,10 +8,8 @@ public class Main {
         University university = University.getInstance();
 
         ArrayList students = university.getListStudent();
-        university.filterAfterGivenYear(students,2000);
-
-//        university.filterFaculty(students,"Gryffindor");
-
+        university.filterByGroup(students,"Group_4_Gr");
+        university.filterByGroup(students,"Group_1_Sl");
 
     }
 }

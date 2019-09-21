@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static Utility.MyRandom.*;
 
 public class University {
-    public static final int NUMBER_OF_STUDENTS = 10;
+    private static final int NUMBER_OF_STUDENTS = 100;
     private final ArrayList<Student> students = new ArrayList<>();
     public static University instance = new University();
 
@@ -22,7 +22,7 @@ public class University {
 
             int course = rnd(1, 4);
             String faculty = getRandomFacultyName();
-            String group = getRandomGroupName() + "_" + course + "_" + faculty.charAt(0) + faculty.charAt(1);
+            String group ="Group" +"_" + course + "_" + faculty.charAt(0) + faculty.charAt(1);
             students.add(Student.builder()
                     .withSurName(getRandomString())
                     .withName(getRandomString())
@@ -38,18 +38,23 @@ public class University {
         }
     }
 
-    void filterFaculty(ArrayList<Student> students, String nameFaculty) {
+    void filterByFaculty(ArrayList<Student> students, String nameFaculty) {
         if (students != null && nameFaculty != null) {
             students.stream().filter(x -> x.getFaculty().equals(nameFaculty)).forEach(System.out::println);
         }
     }
-    void filterAfterGivenYear(ArrayList<Student> students, int year) {
+    void filterByGroup(ArrayList<Student> students, String nameGroup) {
+        if (students != null && nameGroup != null) {
+            students.stream().filter(x -> x.getGroup().equals(nameGroup)).forEach(System.out::println);
+        }
+    }
+    void filterByAfterGivenYear(ArrayList<Student> students, int year) {
         if (students != null && year >=0) {
             students.stream().filter(x -> x.getBirthday().getYear()>=year).forEach(System.out::println);
         }
     }
 
-    void filterFacultyAndCourse(ArrayList<Student> students) {
+    void filterByFacultyAndCourse(ArrayList<Student> students) {
         if (students != null) {
             System.out.println("\n=================== Gryffindor =============================");
             students.stream().filter(x -> x.getFaculty().equals("Gryffindor")).forEach(System.out::println);
