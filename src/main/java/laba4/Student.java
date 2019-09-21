@@ -1,5 +1,7 @@
 package laba4;
 
+import Utility.MyData;
+
 public class Student extends Person {
     private static int id = 0;
     private int phone;
@@ -29,8 +31,8 @@ public class Student extends Person {
         private String group = "";
         private String surName = "";
         private String patronymic = "";
-        private String birthday = "";
-        private Address address = new Address(0, "", "");
+        private MyData birthday = new MyData(0, 0, 0);
+        private Address address = ADDRESS_DEFAULT;
 
         private Builder() {
             // private constructor
@@ -88,11 +90,11 @@ public class Student extends Person {
             return this;
         }
 
-        Builder withBirthday(String birthday) {
+        Builder withBirthday(MyData birthday) {
             if (birthday != null)
-                this.birthday = birthday;
+                this.birthday = new MyData(birthday.getYear(), birthday.getMonth(), birthday.getDay());
             else
-                birthday = "";
+                birthday = new MyData(0, 0, 0);
             return this;
         }
 
@@ -100,15 +102,13 @@ public class Student extends Person {
             if (address != null)
                 this.address = address;
             else
-                address = new Address(0, "", "");
+                address = ADDRESS_DEFAULT;
             return this;
         }
 
         Student build() {
             return new Student(this);
         }
-
-
     }
 
     @Override
